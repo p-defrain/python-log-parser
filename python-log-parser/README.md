@@ -1,82 +1,73 @@
-Python Security Log Analyzer
+# Python Security Log Analyzer
+A Python-based tool for analyzing Windows Security Event Logs to detect suspicious login behavior, brute-force attacks, and process execution activity.  
+Designed as a portfolio-friendly cybersecurity project that demonstrates real SOC analysis skills.
 
-A Python-based tool for analyzing Windows Security Event Logs to detect suspicious activity, brute-force attacks, and process execution behavior.
+---
 
-This project is designed to simulate real SOC (Security Operations Center) workflows using synthetic log data, making it ideal for cybersecurity students and professionals building a portfolio.
+## 🔍 Overview
 
-🚀 Features
-🔍 Log Event Parsing
+This project parses Windows-style CSV security logs and automatically identifies:
 
-Parses Windows-style CSV logs and extracts:
+- Failed and successful login attempts  
+- Suspicious authentication patterns  
+- Repeated login failures by user  
+- Brute-force attempts by IP address  
+- High-frequency failures within a time window  
+- Commonly executed processes on the system  
 
-Failed logins (Event ID 4625)
+The tool simulates real SIEM-style detections similar to Splunk, Elastic, Sentinel, and QRadar.
 
-Successful logins (Event ID 4624)
+---
 
-Process creation events (Event ID 4688)
+## ⚙️ Features
 
-📊 Summary Statistics
+### ✔ Event Log Parsing
+Extracts:
+- **4625** – Failed logon  
+- **4624** – Successful logon  
+- **4688** – Process creation  
 
+### ✔ Summary Statistics
 Displays:
+- Total failed logins  
+- Total successful login
 
-Total failed login attempts
+### ✔ Brute-Force Detection (IP-Level)
+Identifies brute-force sources:
 
-Total successful login attempts
+### ✔ Time-Window Detection (Advanced)
+Identifies rapid login failures within 60 seconds:
 
-Total processes executed
+---
 
-Top failed login accounts
-
-Top executed processes
-
-🔐 Brute-Force Detection (User-Level)
-
-Flags accounts with repeated failed login attempts:
-Possible brute-force attack detected: User 'jdoe' had 8 failed login attempts.
-
-🌐 Brute-Force Detection (IP-Level)
-
-Identifies brute-force attempts originating from a specific IP:
-Possible brute-force source detected: IP 192.168.1.22 had 8 failed login attempts.
-
-⏱ Time-Window Brute-Force Detection (Advanced)
-
-Detects whether multiple failed logins occurred within a short period (default: 60 seconds):
-IP '192.168.1.22' made 8 failed attempts within 60 seconds.
-User 'jdoe' made 8 failed attempts within 60 seconds.
-
-This mimics real SIEM correlation rules used in tools like Splunk, Sentinel, and Elastic.
-
-📁 Project Structure
+## 📁 Project Structure
 python-log-parser/
 │
-├── parser.py                  # Main Python script
+├── parser.py
+├── README.md
+├── LICENSE (optional)
 │
 ├── logs/
-│   └── sample_security_logs.csv   # Synthetic log file used for testing
+│ └── sample_security_logs.csv
 │
-└── README.md                  # Project documentation
+└── screenshots/
+└── output.png
 
-📦 Installation
-1. Clone the Repository
-git clone https://github.com/<your-username>/python-log-parser.git
+---
+
+## ▶️ Running the Tool
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/p-defrain/python-log-parser.git
 cd python-log-parser
 
-2. Ensure Python 3 Is Installed
-
-Check your version:
-python --version
-
-3. Install Dependencies
-
-This project uses only Python standard libraries, so no external installations are required.
-
-▶️ Usage
-
-Run the log analyzer:
+2. Run the parser
 python parser.py
 
-You will see output like:
+3. View the analysis output
+
+Example:
 ==== LOG SUMMARY ====
 Total Failed Logins: 13
 Total Successful Logins: 2
@@ -93,66 +84,38 @@ IP '192.168.1.22' made 8 failed attempts within 60 seconds.
 
 🧪 Sample Log Data
 
-The project includes a synthetic dataset (sample_security_logs.csv) representing realistic Windows Event Log entries for:
-
-Failed logins
-
-Successful logins
-
-Process executions
-
-This ensures consistent and reproducible testing.
-
-💡 Why This Project Matters
-
-This tool demonstrates:
-
-Python automation
-
-Log analysis
-
-Security event correlation
-
-Threat detection logic
-
-Understanding of Windows Security Events
-
-Ability to build SOC-style detection tools
-
-These are high-value skills for roles such as:
-
-SOC Analyst (Tier 1 / Tier 2)
-
-Cybersecurity Analyst
-
-Incident Response Analyst
-
-Threat Hunter
+The logs/sample_security_logs.csv file includes synthetic Windows Event Log entries used for testing.
+This ensures consistent, repeatable results for anyone cloning the project.
 
 📸 Screenshots
 
-Add screenshots of your terminal output here.
-
-Example:
+Add a screenshot of your terminal output here:
 /screenshots/output.png
+(Recommended: include one clear terminal screenshot for recruiters.)
+```
 
-🛠 Future Enhancements
+🛠 Skills Demonstrated
+This project highlights key cybersecurity competencies:
+  - Log analysis & parsing
+  - Threat detection logic
+  - Windows Event ID interpretation
+  - Python automation
+  - Brute-force attack detection
+  - Time-window correlation (SIEM-style detection)
+  - Working with structured datasets (CSV logs)
+  - Creating clean GitHub portfolio projects
 
-Planned improvements include:
-
-JSON output
-
-Suspicious process detection
-
-Exporting alerts to a CSV/JSON
-
-Command-line argument support
-
-Dashboard visualization
+🚀 Future Enhancements
+Planned improvements:
+  - Add JSON output option
+  - Add command-line arguments for thresholds
+  - Add suspicious process detection
+  - Export alerts to CSV
+  - Visual dashboard (Grafana or Python plots)
 
 🤝 Contributing
-
-Pull requests, ideas, and enhancements are welcome!
+Contributions and ideas are welcome!
+Feel free to submit a pull request.
 
 📄 License
 
